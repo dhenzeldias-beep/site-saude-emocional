@@ -100,37 +100,6 @@
             background-color: #fbfbfb;
         }
 
-        /* Estilos do Quiz / Quizizz */
-        .quiz-card {
-            background-color: #f0f7f4;
-            border: 2px dashed #2b88a8;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .quiz-card h3 {
-            color: #1a5f7a;
-            margin-bottom: 0.5rem;
-        }
-
-        .btn-quiz {
-            display: inline-block;
-            background-color: #2b88a8;
-            color: #ffffff;
-            padding: 0.8rem 1.6rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn-quiz:hover {
-            background-color: #1a5f7a;
-        }
-
         /* Formulário de Desabafo */
         .form-desabafo {
             display: flex;
@@ -187,7 +156,7 @@
             border-radius: 4px;
         }
 
-        /* Cartão de Ajuda Direta */
+        /* Cartão de Ajuda Directa */
         .card-ajuda {
             background-color: #eef7fa;
             border-left: 5px solid #1a5f7a;
@@ -228,7 +197,7 @@
 
     <header>
         <h1>Portal de Apoio ao Estudante</h1>
-        <p>Um espaço seguro para cuidar da sua Saúde Emocional e Bem-Estar</p>
+        <p>Um espaço seguro para cuidar da tua Saúde Emocional e Bem-Estar</p>
     </header>
 
     <main class="container">
@@ -239,7 +208,7 @@
             
             <ul>
                 <li><strong>Emoções Naturais:</strong> Sentir ansiedade antes de uma prova, tristeza após uma frustração ou raiva diante de uma injustiça é perfeitamente normal.</li>
-                <li><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou começam a prejudicar a sua rotina escolar e interpessoal, é hora de procurar apoio.</li>
+                <li><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou começam a prejudicar a tua rotina escolar e interpessoal, é hora de procurar apoio.</li>
             </ul>
         </section>
 
@@ -263,11 +232,11 @@
                         <tr>
                             <td><strong>Relações e Bullying</strong></td>
                             <td>Exclusão social ou conflitos entre colegas.</td>
-                            <td>Prática da empatia, diálogo aberto e apoio junto da equipe pedagógica da escola.</td>
+                            <td>Prática da empatia, diálogo aberto e apoio junto da equipa pedagógica da escola.</td>
                         </tr>
                         <tr>
                             <td><strong>Autocuidado</strong></td>
-                            <td>Cansaço excessivo e uso intensivo de telas.</td>
+                            <td>Cansaço excessivo e uso intensivo de ecrãs.</td>
                             <td>Higiene do sono, momentos de desconexão digital e atividades ao ar livre.</td>
                         </tr>
                     </tbody>
@@ -276,54 +245,43 @@
         </section>
 
         <section>
-            <h2>Dicas Rápidas para o Seu Dia a Dia</h2>
+            <h2>Dicas Rápidas para o Teu Dia a Dia</h2>
             <ol>
-                <li><strong>Técnica de Respiração (4-7-8):</strong> Inspire pelo nariz durante 4 segundos, segure o ar por 7 segundos e solte o ar lentamente pela boca durante 8 segundos.</li>
-                <li><strong>Divida as Tarefas:</strong> Em vez de olhar para um trabalho enorme, divida-o em pequenos passos realizáveis.</li>
-                <li><strong>Converse com Alguém:</strong> Compartilhar o que sente com um amigo, familiar ou professor de confiança reduz muito a carga emocional.</li>
+                <li><strong>Técnica de Respiração (4-7-8):</strong> Inspira pelo nariz durante 4 segundos, segura o ar por 7 segundos e deita fora o ar lentamente pela boca durante 8 segundos.</li>
+                <li><strong>Divide as Tarefas:</strong> Em vez de olhar para um trabalho enorme, divide-o em pequenos passos realizáveis.</li>
+                <li><strong>Conversa com Alguém:</strong> Partilhar o que sentes com um amigo, familiar ou professor de confiança reduz imenso a carga emocional.</li>
             </ol>
         </section>
 
         <section>
-            <h2>Quiz Interativo: Teste Seus Conhecimentos</h2>
-            <p>Que tal testar o que você sabe sobre empatia, inteligência emocional e convivência escolar de forma divertida?</p>
-            
-            <div class="quiz-card">
-                <h3>Desafio da Saúde Emocional no Quizizz</h3>
-                <p>Descubra como está o seu nível de empatia e aprenda dicas práticas para o seu dia a dia.</p>
-                <a href="https://quizizz.com" target="_blank" rel="noopener" class="btn-quiz">🎮 Responder ao Quiz no Quizizz</a>
-            </div>
-        </section>
-
-        <section>
             <h2>Espaço de Acolhimento e Desabafo</h2>
-            <p>Precisa colocar algo para fora ou compartilhar uma situação? Escreva o seu desabafo com tranquilidade no formulário abaixo.</p>
+            <p>Precisas de deitar algo cá para fora ou partilhar uma situação? Escreve o teu desabafo com tranquilidade no formulário abaixo.</p>
             
-            <form class="form-desabafo" onsubmit="event.preventDefault(); alert('O seu desabafo foi enviado com sucesso. Lembre-se de que você não está sozinho!'); this.reset();">
+            <form class="form-desabafo" onsubmit="event.preventDefault(); alert('O teu desabafo foi enviado com sucesso. Lembra-te de que não estás sozinho!'); this.reset();">
                 <label for="nome">Nome ou Apelido (Opcional):</label>
-                <input type="text" id="nome" placeholder="Ex: Anônimo ou o seu nome">
+                <input type="text" id="nome" placeholder="Ex: Anónimo ou o teu nome">
 
-                <label for="mensagem">O seu desabafo ou mensagem:</label>
-                <textarea id="mensagem" rows="5" placeholder="Escreva aqui o que está sentindo..." required></textarea>
+                <label for="mensagem">O teu desabafo ou mensagem:</label>
+                <textarea id="mensagem" rows="5" placeholder="Escreva aqui o que estás a sentir..." required></textarea>
 
                 <button type="submit" class="btn-enviar">Enviar Desabafo</button>
             </form>
             
             <div class="aviso-seguranca">
-                <strong>Nota importante de segurança:</strong> Este formulário destina-se a desabafos e partilha de experiências. Se estiver passando por um momento de crise urgente ou emergência emocional, por favor contate diretamente o <strong>CVV (188)</strong> ou procure a orientação de um adulto de confiança na sua escola.
+                <strong>Nota importante de segurança:</strong> Este formulário destina-se a desabafos e partilha de experiências. Se estiveres a passar por um momento de crise urgente ou emergência emocional, por favor contacta diretamente o <strong>CVV (188)</strong> ou procura a orientação de um adulto de confiança na tua escola.
             </div>
         </section>
 
         <section>
             <h2>Onde Encontrar Ajuda</h2>
             <div class="card-ajuda">
-                <h3>Lembre-se: Você nunca está sozinho!</h3>
-                <p>Se precisar de conversar ou de orientação profissional, você pode recorrer aos seguintes canais gratuitos e confidenciais:</p>
+                <h3>Lembra-te: Nunca estás sozinho!</h3>
+                <p>Se precisares de conversar ou de orientação profissional, podes recorrer aos seguintes canais gratuitos e confidenciais:</p>
                 <ul>
-                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da sua confiança.</li>
+                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da tua confiança.</li>
                     <li><strong>CVV (Centro de Valorização da Vida):</strong> Apoio emocional gratuito e confidencial 24 horas por dia.</li>
                 </ul>
-                <a href="https://www.cvv.org.br" target="_blank" rel="noopener" class="btn-contato">Ligar 188 ou Acessar o Chat do CVV</a>
+                <a href="https://www.cvv.org.br" target="_blank" rel="noopener" class="btn-contato">Ligar 188 ou Aceder ao Chat do CVV</a>
             </div>
         </section>
 
