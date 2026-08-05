@@ -6,23 +6,108 @@
     <title>Portal de Apoio ao Estudante | Saúde Emocional</title>
     <style>
         /* ==========================================
-           ESTILOS GERAIS E ESTRUTURA (CSS)
+           VARIÁVEIS DE CORES (MODO CLARO / ESCURO)
+           ========================================== */
+        :root {
+            --bg-body: #f4f9fc;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1a5f7a;
+            --primary-color: #2b88a8;
+            --card-border: #eef7fa;
+            --table-border: #e0e0e0;
+            --input-bg: #ffffff;
+            --input-border: #cccccc;
+            --box-highlight: #eef7fa;
+            --warning-bg: #fff8e7;
+            --warning-border: #f39c12;
+            --warning-text: #555555;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-size-base: 16px;
+        }
+
+        /* MODO ESCURO */
+        body.dark-mode {
+            --bg-body: #12181f;
+            --bg-card: #1e2733;
+            --text-main: #e0e6ed;
+            --text-heading: #58c4dc;
+            --primary-color: #38a3a5;
+            --card-border: #2c3e50;
+            --table-border: #34495e;
+            --input-bg: #2c3e50;
+            --input-border: #455a64;
+            --box-highlight: #1a2a3a;
+            --warning-bg: #2d2615;
+            --warning-border: #f39c12;
+            --warning-text: #e0e0e0;
+        }
+
+        /* ==========================================
+           ESTILOS GERAIS
            ========================================== */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            font-size: var(--font-size-base);
         }
 
         body {
-            background-color: #f4f9fc;
-            color: #333333;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* BARRA DE ACESSIBILIDADE E PERSONALIZAÇÃO */
+        .barramenu-acessibilidade {
+            background-color: #1a5f7a;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+
+        .barramenu-acessibilidade div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-acessibilidade {
+            background: #ffffff;
+            color: #1a5f7a;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-acessibilidade:hover {
+            background: #eef7fa;
+        }
+
+        .seletor-fonte {
+            padding: 4px;
+            border-radius: 4px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         header {
-            background-color: #2b88a8;
+            background-color: var(--primary-color);
             color: #ffffff;
             padding: 2.5rem 1rem;
             text-align: center;
@@ -45,22 +130,32 @@
         }
 
         section {
-            background: #ffffff;
+            background: var(--bg-card);
             padding: 2rem;
             margin-bottom: 1.8rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: background 0.3s;
         }
 
         h2 {
-            color: #1a5f7a;
+            color: var(--text-heading);
             margin-bottom: 1.2rem;
-            border-bottom: 2px solid #eef7fa;
+            border-bottom: 2px solid var(--card-border);
             padding-bottom: 0.5rem;
         }
 
         p {
             margin-bottom: 1rem;
+        }
+
+        /* Imagens Ilustrativas */
+        .img-secao {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1.2rem;
         }
 
         /* Listas */
@@ -85,19 +180,67 @@
         }
 
         th, td {
-            border: 1px solid #e0e0e0;
+            border: 1px solid var(--table-border);
             padding: 12px;
             text-align: left;
         }
 
         th {
-            background-color: #eef7fa;
-            color: #1a5f7a;
+            background-color: var(--box-highlight);
+            color: var(--text-heading);
             font-weight: bold;
         }
 
-        tr:nth-child(even) {
-            background-color: #fbfbfb;
+        /* Termômetro das Emoções */
+        .termometro-box {
+            background-color: var(--box-highlight);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--primary-color);
+        }
+
+        .emojis-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.2rem 0;
+        }
+
+        .btn-emoji {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-emoji span {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--text-heading);
+        }
+
+        .btn-emoji:hover {
+            transform: scale(1.08);
+        }
+
+        .mensagem-resposta {
+            margin-top: 1rem;
+            padding: 12px;
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            color: var(--text-heading);
+            font-weight: bold;
+            display: none;
+            border-left: 4px solid var(--primary-color);
         }
 
         /* Formulário de Desabafo */
@@ -110,27 +253,23 @@
 
         .form-desabafo label {
             font-weight: bold;
-            color: #1a5f7a;
+            color: var(--text-heading);
         }
 
         .form-desabafo input, 
         .form-desabafo textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #cccccc;
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border: 1px solid var(--input-border);
             border-radius: 5px;
             font-size: 1rem;
-        }
-
-        .form-desabafo input:focus, 
-        .form-desabafo textarea:focus {
-            outline: none;
-            border-color: #2b88a8;
-            box-shadow: 0 0 5px rgba(43, 136, 168, 0.3);
+            font-family: inherit;
         }
 
         .btn-enviar {
-            background-color: #2b88a8;
+            background-color: var(--primary-color);
             color: #ffffff;
             border: none;
             padding: 12px 20px;
@@ -139,81 +278,127 @@
             border-radius: 5px;
             cursor: pointer;
             align-self: flex-start;
-            transition: background-color 0.2s;
+            transition: opacity 0.2s;
         }
 
         .btn-enviar:hover {
-            background-color: #1a5f7a;
+            opacity: 0.9;
         }
 
         .aviso-seguranca {
             margin-top: 1.2rem;
             font-size: 0.9rem;
-            color: #555555;
-            background-color: #fff8e7;
+            color: var(--warning-text);
+            background-color: var(--warning-bg);
             padding: 12px;
-            border-left: 4px solid #f39c12;
+            border-left: 4px solid var(--warning-border);
             border-radius: 4px;
         }
 
-        /* Cartão de Ajuda Directa */
+        /* Cartão de Ajuda Direta */
         .card-ajuda {
-            background-color: #eef7fa;
-            border-left: 5px solid #1a5f7a;
+            background-color: var(--box-highlight);
+            border-left: 5px solid var(--text-heading);
             padding: 1.5rem;
             border-radius: 5px;
         }
 
         .card-ajuda h3 {
-            color: #1a5f7a;
+            color: var(--text-heading);
             margin-bottom: 0.8rem;
         }
 
         .btn-contato {
             display: inline-block;
-            background-color: #1a5f7a;
+            background-color: var(--text-heading);
             color: #ffffff;
             padding: 0.7rem 1.4rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             margin-top: 0.8rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn-contato:hover {
-            background-color: #2b88a8;
         }
 
         footer {
             text-align: center;
             padding: 2rem 1rem;
-            color: #666666;
+            color: var(--text-main);
             font-size: 0.9rem;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
+    <div class="barramenu-acessibilidade">
+        <div>
+            <span>💡 Modo Visual:</span>
+            <button class="btn-acessibilidade" onclick="alternarTema()">🌙 Escuro / ☀️ Claro</button>
+        </div>
+        <div>
+            <span>🔤 Tamanho do Texto:</span>
+            <button class="btn-acessibilidade" onclick="alterarTamanhoFonte(1)">A+</button>
+            <button class="btn-acessibilidade" onclick="alterarTamanhoFonte(-1)">A-</button>
+            <button class="btn-acessibilidade" onclick="resetarTamanhoFonte()">A</button>
+        </div>
+        <div>
+            <span>🎨 Tipo de Fonte:</span>
+            <select class="seletor-fonte" onchange="alterarTipoFonte(this.value)">
+                <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Padrão (Sem Serifa)</option>
+                <option value="'Georgia', 'Times New Roman', serif">Clássica (Serifa)</option>
+                <option value="'Courier New', Courier, monospace">Espaçada (Mono)</option>
+            </select>
+        </div>
+    </div>
+
     <header>
-        <h1>Portal de Apoio ao Estudante</h1>
-        <p>Um espaço seguro para cuidar da tua Saúde Emocional e Bem-Estar</p>
+        <h1>🌱 Portal de Apoio ao Estudante</h1>
+        <p>Um espaço seguro para cuidar da sua Saúde Emocional e Bem-Estar 🤍</p>
     </header>
 
     <main class="container">
         
         <section>
-            <h2>O que é a Saúde Emocional?</h2>
+            <h2>🌡️ Termômetro das Emoções</h2>
+            <div class="termometro-box">
+                <p><strong>Como você está se sentindo hoje?</strong> Clique no emoji que melhor representa o seu momento:</p>
+                
+                <div class="emojis-grid">
+                    <button class="btn-emoji" onclick="mostrarResposta('ótimo')">
+                        😁 <span>Muito Bem</span>
+                    </button>
+                    <button class="btn-emoji" onclick="mostrarResposta('bem')">
+                        🙂 <span>Bem</span>
+                    </button>
+                    <button class="btn-emoji" onclick="mostrarResposta('medio')">
+                        😐 <span>Médio / Neutro</span>
+                    </button>
+                    <button class="btn-emoji" onclick="mostrarResposta('triste')">
+                        😢 <span>Triste</span>
+                    </button>
+                    <button class="btn-emoji" onclick="mostrarResposta('estressado')">
+                        🤯 <span>Sobrecarregado</span>
+                    </button>
+                </div>
+
+                <div id="resposta-termometro" class="mensagem-resposta"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🧠 O que é a Saúde Emocional?</h2>
+            <img class="img-secao" src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=800&q=80" alt="Estudantes conversando e rindo juntos">
+            
             <p>A saúde emocional diz respeito à forma como reconhecemos, compreendemos e lidamos com as nossas emoções no dia a dia. Estar emocionalmente saudável não significa estar feliz o tempo todo, mas sim ter ferramentas para enfrentar os desafios e sentimentos difíceis.</p>
             
             <ul>
                 <li><strong>Emoções Naturais:</strong> Sentir ansiedade antes de uma prova, tristeza após uma frustração ou raiva diante de uma injustiça é perfeitamente normal.</li>
-                <li><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou começam a prejudicar a tua rotina escolar e interpessoal, é hora de procurar apoio.</li>
+                <li><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou começam a prejudicar a sua rotina escolar e interpessoal, é hora de procurar apoio.</li>
             </ul>
         </section>
 
         <section>
-            <h2>Guias Práticos de Acolhimento</h2>
+            <h2>📋 Guias Práticos de Acolhimento</h2>
             <div class="tabela-wrapper">
                 <table>
                     <thead>
@@ -225,18 +410,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Ansiedade Escolar</strong></td>
+                            <td><strong>Ansiedade Escolar 😰</strong></td>
                             <td>Pressão por notas e receio do futuro.</td>
                             <td>Técnicas de respiração guiada e organização da rotina de estudos com pausas.</td>
                         </tr>
                         <tr>
-                            <td><strong>Relações e Bullying</strong></td>
+                            <td><strong>Relações e Bullying 🤝</strong></td>
                             <td>Exclusão social ou conflitos entre colegas.</td>
-                            <td>Prática da empatia, diálogo aberto e apoio junto da equipa pedagógica da escola.</td>
+                            <td>Prática da empatia, diálogo aberto e apoio junto da equipe pedagógica da escola.</td>
                         </tr>
                         <tr>
-                            <td><strong>Autocuidado</strong></td>
-                            <td>Cansaço excessivo e uso intensivo de ecrãs.</td>
+                            <td><strong>Autocuidado 🎨</strong></td>
+                            <td>Cansaço excessivo e uso intensivo de telas.</td>
                             <td>Higiene do sono, momentos de desconexão digital e atividades ao ar livre.</td>
                         </tr>
                     </tbody>
@@ -245,51 +430,100 @@
         </section>
 
         <section>
-            <h2>Dicas Rápidas para o Teu Dia a Dia</h2>
+            <h2>💡 Dicas Rápidas para o Seu Dia a Dia</h2>
             <ol>
-                <li><strong>Técnica de Respiração (4-7-8):</strong> Inspira pelo nariz durante 4 segundos, segura o ar por 7 segundos e deita fora o ar lentamente pela boca durante 8 segundos.</li>
-                <li><strong>Divide as Tarefas:</strong> Em vez de olhar para um trabalho enorme, divide-o em pequenos passos realizáveis.</li>
-                <li><strong>Conversa com Alguém:</strong> Partilhar o que sentes com um amigo, familiar ou professor de confiança reduz imenso a carga emocional.</li>
+                <li><strong>Técnica de Respiração (4-7-8) 🌬️:</strong> Inspire pelo nariz durante 4 segundos, segure o ar por 7 segundos e solte o ar lentamente pela boca durante 8 segundos.</li>
+                <li><strong>Divida as Tarefas 📝:</strong> Em vez de olhar para um trabalho enorme, divida-o em pequenos passos realizáveis.</li>
+                <li><strong>Converse com Alguém 💬:</strong> Compartilhar o que sente com um amigo, familiar ou professor de confiança reduz muito a carga emocional.</li>
             </ol>
         </section>
 
         <section>
-            <h2>Espaço de Acolhimento e Desabafo</h2>
-            <p>Precisas de deitar algo cá para fora ou partilhar uma situação? Escreve o teu desabafo com tranquilidade no formulário abaixo.</p>
+            <h2>💬 Espaço de Acolhimento e Desabafo</h2>
+            <img class="img-secao" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Amigos dando apoio e abraçando um ao outro">
             
-            <form class="form-desabafo" onsubmit="event.preventDefault(); alert('O teu desabafo foi enviado com sucesso. Lembra-te de que não estás sozinho!'); this.reset();">
+            <p>Precisa colocar algo para fora ou compartilhar uma situação? Escreva o seu desabafo com tranquilidade no formulário abaixo.</p>
+            
+            <form class="form-desabafo" onsubmit="event.preventDefault(); alert('O seu desabafo foi enviado com sucesso. Lembre-se de que você não está sozinho! 💙'); this.reset();">
                 <label for="nome">Nome ou Apelido (Opcional):</label>
-                <input type="text" id="nome" placeholder="Ex: Anónimo ou o teu nome">
+                <input type="text" id="nome" placeholder="Ex: Anônimo ou o seu nome">
 
-                <label for="mensagem">O teu desabafo ou mensagem:</label>
-                <textarea id="mensagem" rows="5" placeholder="Escreva aqui o que estás a sentir..." required></textarea>
+                <label for="mensagem">O seu desabafo ou mensagem:</label>
+                <textarea id="mensagem" rows="5" placeholder="Escreva aqui o que está sentindo..." required></textarea>
 
-                <button type="submit" class="btn-enviar">Enviar Desabafo</button>
+                <button type="submit" class="btn-enviar">Enviar Desabafo ✨</button>
             </form>
             
             <div class="aviso-seguranca">
-                <strong>Nota importante de segurança:</strong> Este formulário destina-se a desabafos e partilha de experiências. Se estiveres a passar por um momento de crise urgente ou emergência emocional, por favor contacta diretamente o <strong>CVV (188)</strong> ou procura a orientação de um adulto de confiança na tua escola.
+                <strong>⚠️ Nota importante de segurança:</strong> Este formulário destina-se a desabafos e partilha de experiências. Se estiver passando por um momento de crise urgente ou emergência emocional, por favor contate diretamente o <strong>CVV (188)</strong> ou procure a orientação de um adulto de confiança na sua escola.
             </div>
         </section>
 
         <section>
-            <h2>Onde Encontrar Ajuda</h2>
+            <h2>🆘 Onde Encontrar Ajuda</h2>
             <div class="card-ajuda">
-                <h3>Lembra-te: Nunca estás sozinho!</h3>
-                <p>Se precisares de conversar ou de orientação profissional, podes recorrer aos seguintes canais gratuitos e confidenciais:</p>
+                <h3>Lembre-se: Você nunca está sozinho! ❤️</h3>
+                <p>Se precisar de conversar ou de orientação profissional, você pode recorrer aos seguintes canais gratuitos e confidenciais:</p>
                 <ul>
-                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da tua confiança.</li>
+                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da sua confiança.</li>
                     <li><strong>CVV (Centro de Valorização da Vida):</strong> Apoio emocional gratuito e confidencial 24 horas por dia.</li>
                 </ul>
-                <a href="https://www.cvv.org.br" target="_blank" rel="noopener" class="btn-contato">Ligar 188 ou Aceder ao Chat do CVV</a>
+                <a href="https://www.cvv.org.br" target="_blank" rel="noopener" class="btn-contato">📞 Ligar 188 ou Acessar o Chat do CVV</a>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; Portal de Apoio ao Estudante — Criado para promover o respeito, a empatia e a saúde emocional no ambiente escolar.</p>
+        <p>&copy; Portal de Apoio ao Estudante — Criado para promover o respeito, a empatia e a saúde emocional no ambiente escolar. ✨</p>
     </footer>
+
+    <script>
+        // 1. ALTERNAR MODO ESCURO / CLARO
+        function alternarTema() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // 2. ALTERAR TAMANHO DA FONTE
+        let tamanhoFonteAtual = 16;
+
+        function alterarTamanhoFonte(mudanca) {
+            tamanhoFonteAtual += mudanca * 2;
+            // Limites de tamanho (mínimo 12px, máximo 24px)
+            if (tamanhoFonteAtual < 12) tamanhoFonteAtual = 12;
+            if (tamanhoFonteAtual > 24) tamanhoFonteAtual = 24;
+            
+            document.documentElement.style.setProperty('--font-size-base', tamanhoFonteAtual + 'px');
+        }
+
+        function resetarTamanhoFonte() {
+            tamanhoFonteAtual = 16;
+            document.documentElement.style.setProperty('--font-size-base', '16px');
+        }
+
+        // 3. ALTERAR TIPO DE FONTE
+        function alterarTipoFonte(fonte) {
+            document.documentElement.style.setProperty('--font-family', fonte);
+        }
+
+        // 4. MENSAGENS DO TERMÔMETRO
+        function mostrarResposta(estado) {
+            const caixaResposta = document.getElementById('resposta-termometro');
+            caixaResposta.style.display = 'block';
+
+            if (estado === 'ótimo') {
+                caixaResposta.innerHTML = "Que notícia maravilhosa! 🌟 Aproveite essa energia boa para espalhar gentileza e apoiar algum colega que precise hoje!";
+            } else if (estado === 'bem') {
+                caixaResposta.innerHTML = "Muito bom saber que está bem! 😊 Continue cuidando da sua rotina, do seu sono e das coisas que você ama fazer.";
+            } else if (estado === 'medio') {
+                caixaResposta.innerHTML = "Dias 'médios' fazem parte do caminho. 🌤️ Respire fundo, faça uma pausa agradável e seja gentil com você mesmo hoje.";
+            } else if (estado === 'triste') {
+                caixaResposta.innerHTML = "Sinto muito que esteja se sentindo assim. 💙 Lembre-se de que não há problema em ficar triste às vezes. Que tal conversar com alguém de confiança ou usar o nosso espaço de desabafo?";
+            } else if (estado === 'estressado') {
+                caixaResposta.innerHTML = "A sobrecarga pesa bastante, né? 🛑 Tente fazer uma pausa agora: inspire em 4 segundos e solte o ar devagar. Se precisar, peça ajuda na escola ou desabafe no nosso formulário abaixo!";
+            }
+        }
+    </script>
 
 </body>
 </html>
