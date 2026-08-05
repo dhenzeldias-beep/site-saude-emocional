@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Mente Aberta - Saúde Emocional na Escola</title>
+    <title>Portal de Apoio ao Estudante | Saúde Emocional</title>
     <style>
+        /* Estilos Gerais */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f8f9;
+            background-color: #f4f9fc;
             color: #333;
             line-height: 1.6;
         }
 
-        /* Cabeçalho */
         header {
-            background-color: #2a9d8f;
+            background-color: #2b88a8;
             color: white;
+            padding: 2rem;
             text-align: center;
-            padding: 2rem 1rem;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
 
@@ -36,73 +36,355 @@
             opacity: 0.9;
         }
 
-        /* Seção Principal / Banner */
-        .hero {
+        container {
             max-width: 900px;
             margin: 2rem auto;
             padding: 0 1rem;
-            text-align: center;
+            display: block;
         }
 
-        .hero-img {
+        section {
+            background: white;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eef7fa;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Tabela */
+        table {
             width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            border-collapse: collapse;
+            margin: 1rem 0;
         }
 
-        /* Mensagem de Acolhimento */
-        .welcome-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 6px solid #e76f51;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
             text-align: left;
         }
 
-        .welcome-card h2 {
-            color: #264653;
+        th {
+            background-color: #eef7fa;
+            color: #1a5f7a;
+        }
+
+        /* Lista e Cartões */
+        ul, ol {
+            margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .welcome-card p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            color: #555;
+        li {
+            margin-bottom: 0.5rem;
         }
 
-        /* Rodapé */
+        .card-ajuda {
+            background-color: #eef7fa;
+            border-left: 5px solid #1a5f7a;
+            padding: 1.2rem;
+            border-radius: 4px;
+        }
+
+        .btn-contato {
+            display: inline-block;
+            background-color: #1a5f7a;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        .btn-contato:hover {
+            background-color: #2b88a8;
+        }
+
         footer {
             text-align: center;
             padding: 1.5rem;
-            background-color: #264653;
-            color: white;
-            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Espaço Mente Aberta 🧠✨</h1>
-        <p>Um portal de apoio, acolhimento e escuta para os estudantes</p>
+        <h1>Portal de Apoio ao Estudante</h1>
+        <p>Um espaço seguro para cuidar da tua Saúde Emocional e Bem-Estar</p>
     </header>
 
-    <main class="hero">
-        <img class="hero-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" alt="Grupo de estudantes sorrindo e se apoiando">
-
-        <section class="welcome-card">
-            <h2>Você não precisa carregar tudo sozinho(a)!</h2>
-            <p>A rotina da escola, os estudos, a pressão do dia a dia e as mudanças dessa fase podem ser desgastantes. O <strong>Espaço Mente Aberta</strong> foi criado por e para alunos da nossa escola pública, com um único objetivo: ser um lugar seguro para você desacelerar, se entender e cuidar do seu bem-estar emocional.</p>
-            <p>Aqui você vai encontrar dicas práticas para lidar com a ansiedade antes das provas, conteúdos sobre autocuidado, informações sobre como buscar ajuda e um espaço de empatia. Sinta-se em casa!</p>
+    <container>
+        <section>
+            <h2>O que é a Saúde Emocional?</h2>
+            <p>A saúde emocional diz respeito à forma como reconhecemos, compreendemos e lidamos com as nossas emoções no dia a dia. Estar emocionalmente saudável não significa estar feliz o tempo todo, mas sim ter ferramentas para enfrentar os desafios e sentimentos difíceis.</p>
+            <br>
+            <ul>
+                <td><strong>Emoções Naturais:</strong> Sentir ansiedade antes de uma prova, tristeza após uma frustração ou raiva diante de uma injustiça é normal.</td>
+                <br>
+                <td><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou prejudicam a tua rotina, é hora de procurar apoio.</td>
+            </ul>
         </section>
-    </main>
+
+        <section>
+            <h2>Guias Práticos de Acolhimento</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tema</th>
+                        <th>Desafio Comum</th>
+                        <th>Estratégia de Apoio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ansiedade Escolar</strong></td>
+                        <td>Pressão por notas e medo do futuro.</td>
+                        <td>Técnicas de respiração guiada e divisão do tempo de estudo com pausas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relações e Bullying</strong></td>
+                        <td>Exclusão social ou conflitos entre colegas.</td>
+                        <td>Prática da empatia, diálogo aberto e apoio junto da equipa da escola.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Autocuidado</strong></td>
+                        <td>Cansaço e excesso de redes sociais.</td>
+                        <td>Higiene do sono, desconexão digital e momentos ao ar livre.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Dicas Rápidas para o Teu Dia a Dia</h2>
+            <ol>
+                <li><strong>Técnica de Respiração (4-7-8):</strong> Inspira por 4 segundos, segura o ar por 7 segundos e deita fora lentamente por 8 segundos.</li>
+                <li><strong>Divide as Tarefas:</strong> Em vez de olhar para um trabalho enorme, divide-o em passos pequenos.</li>
+                <li><strong>Conversa com Alguém:</strong> Partilhar o que sentes com um amigo ou professor reduz a carga emocional.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Onde Encontrar Ajuda</h2>
+            <div class="card-ajuda">
+                <h3>Lembra-te: Nunca estás sozinho!</h3>
+                <p>Se precisares de conversar ou de orientação profissional, podes recorrer aos seguintes canais:</p>
+                <ul>
+                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da tua confiança.</li>
+                    <li><strong>CVV (Centro de Valorização da Vida):</strong> Apoio gratuito e confidencial 24 horas por dia.</li>
+                </ul>
+                <a href="https://www.cvv.org.br" target="_blank" class="btn-contato">Ligar 188 ou Aceder ao Chat do CVV</a>
+            </div>
+        </section>
+    </container>
 
     <footer>
-        <p>Projeto de Apoio Emocional Estudantil • Feito para a comunidade escolar ❤️</p>
+        <p>&copy; Portal de Apoio ao Estudante — Desenvolvido para promover o respeito, a empatia e o bem-estar escolar.</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Apoio ao Estudante | Saúde Emocional</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2b88a8;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: block;
+        }
+
+        section {
+            background: white;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #eef7fa;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eef7fa;
+            color: #1a5f7a;
+        }
+
+        /* Lista e Cartões */
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-ajuda {
+            background-color: #eef7fa;
+            border-left: 5px solid #1a5f7a;
+            padding: 1.2rem;
+            border-radius: 4px;
+        }
+
+        .btn-contato {
+            display: inline-block;
+            background-color: #1a5f7a;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        .btn-contato:hover {
+            background-color: #2b88a8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Portal de Apoio ao Estudante</h1>
+        <p>Um espaço seguro para cuidar da tua Saúde Emocional e Bem-Estar</p>
+    </header>
+
+    <container>
+        <section>
+            <h2>O que é a Saúde Emocional?</h2>
+            <p>A saúde emocional diz respeito à forma como reconhecemos, compreendemos e lidamos com as nossas emoções no dia a dia. Estar emocionalmente saudável não significa estar feliz o tempo todo, mas sim ter ferramentas para enfrentar os desafios e sentimentos difíceis.</p>
+            <br>
+            <ul>
+                <td><strong>Emoções Naturais:</strong> Sentir ansiedade antes de uma prova, tristeza após uma frustração ou raiva diante de uma injustiça é normal.</td>
+                <br>
+                <td><strong>Sinais de Alerta:</strong> Quando estes sentimentos se tornam contínuos, intensos ou prejudicam a tua rotina, é hora de procurar apoio.</td>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Guias Práticos de Acolhimento</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tema</th>
+                        <th>Desafio Comum</th>
+                        <th>Estratégia de Apoio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ansiedade Escolar</strong></td>
+                        <td>Pressão por notas e medo do futuro.</td>
+                        <td>Técnicas de respiração guiada e divisão do tempo de estudo com pausas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relações e Bullying</strong></td>
+                        <td>Exclusão social ou conflitos entre colegas.</td>
+                        <td>Prática da empatia, diálogo aberto e apoio junto da equipa da escola.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Autocuidado</strong></td>
+                        <td>Cansaço e excesso de redes sociais.</td>
+                        <td>Higiene do sono, desconexão digital e momentos ao ar livre.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Dicas Rápidas para o Teu Dia a Dia</h2>
+            <ol>
+                <li><strong>Técnica de Respiração (4-7-8):</strong> Inspira por 4 segundos, segura o ar por 7 segundos e deita fora lentamente por 8 segundos.</li>
+                <li><strong>Divide as Tarefas:</strong> Em vez de olhar para um trabalho enorme, divide-o em passos pequenos.</li>
+                <li><strong>Conversa com Alguém:</strong> Partilhar o que sentes com um amigo ou professor reduz a carga emocional.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Onde Encontrar Ajuda</h2>
+            <div class="card-ajuda">
+                <h3>Lembra-te: Nunca estás sozinho!</h3>
+                <p>Se precisares de conversar ou de orientação profissional, podes recorrer aos seguintes canais:</p>
+                <ul>
+                    <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da tua confiança.</li>
+                    <li><strong>CVV (Centro de Valorização da Vida):</strong> Apoio gratuito e confidencial 24 horas por dia.</li>
+                </ul>
+                <a href="https://www.cvv.org.br" target="_blank" class="btn-contato">Ligar 188 ou Aceder ao Chat do CVV</a>
+            </div>
+        </section>
+    </container>
+
+    <footer>
+        <p>&copy; Portal de Apoio ao Estudante — Desenvolvido para promover o respeito, a empatia e o bem-estar escolar.</p>
     </footer>
 
 </body>
