@@ -51,9 +51,6 @@
             --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
-        /* ==========================================
-           RESET E ESTILOS BASE
-           ========================================== */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -130,7 +127,6 @@
             color: #ffffff;
         }
 
-        /* HERO HEADER COM ANIMAÇÃO */
         header {
             background: var(--hero-gradient);
             color: #ffffff;
@@ -155,7 +151,6 @@
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -0.025em;
-            animation: fadeInDown 0.8s ease;
         }
 
         header p {
@@ -163,10 +158,8 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
-            animation: fadeInUp 0.8s ease;
         }
 
-        /* CONTAINER PRINCIPAL */
         .container {
             max-width: 960px;
             margin: -2rem auto 3rem;
@@ -175,7 +168,6 @@
             z-index: 10;
         }
 
-        /* SEÇÕES / CARDS */
         section {
             background: var(--bg-card);
             padding: 2.5rem;
@@ -184,7 +176,6 @@
             border: 1px solid var(--card-border);
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.6s ease;
         }
 
         section:hover {
@@ -216,7 +207,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        /* TERMÔMETRO INTERATIVO COM BARRA DE PROGRESSO */
+        /* TERMÔMETRO INTERATIVO */
         .termometro-box {
             background-color: var(--box-highlight);
             padding: 2rem;
@@ -262,7 +253,6 @@
             background-color: var(--box-highlight);
         }
 
-        /* BARRA DO TERMÔMETRO */
         .termometro-bar-container {
             width: 100%;
             height: 12px;
@@ -289,10 +279,49 @@
             display: none;
             border-left: 4px solid var(--primary-color);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            animation: fadeIn 0.4s ease;
         }
 
-        /* DICAS EM CARDS (GRID MODERNO) */
+        /* 1. EXERCÍCIO DE RESPIRAÇÃO GUIADA */
+        .respiracao-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--box-highlight);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .circulo-respiracao {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .circulo-respiracao.inspirar {
+            transform: scale(1.5);
+        }
+
+        .circulo-respiracao.segurar {
+            transform: scale(1.5);
+        }
+
+        .circulo-respiracao.expirar {
+            transform: scale(1);
+        }
+
+        /* DICAS EM CARDS */
         .grid-dicas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -316,9 +345,43 @@
             font-size: 1.1rem;
             color: var(--text-heading);
             margin-bottom: 0.5rem;
+        }
+
+        /* 2. PERGUNTAS FREQUENTES (ACCORDION) */
+        .faq-item {
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .faq-pergunta {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.2rem;
+            background: var(--box-highlight);
+            border: none;
+            color: var(--text-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+        }
+
+        .faq-resposta {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.2rem;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-main);
+        }
+
+        .faq-resposta.open {
+            max-height: 200px;
+            padding: 1rem 1.2rem;
         }
 
         /* TABELA */
@@ -349,11 +412,7 @@
             border-bottom: 1px solid var(--table-border);
         }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* FORMULÁRIO */
+        /* FORMULÁRIO E DIÁRIO DE GRATIDÃO */
         .form-desabafo {
             display: flex;
             flex-direction: column;
@@ -377,12 +436,6 @@
             font-size: 0.95rem;
             font-family: inherit;
             outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-desabafo input:focus, 
-        .form-desabafo textarea:focus {
-            border-color: var(--primary-color);
         }
 
         .btn-enviar {
@@ -395,13 +448,12 @@
             border-radius: 8px;
             cursor: pointer;
             align-self: flex-start;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
         .btn-enviar:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
 
         .aviso-seguranca {
@@ -414,7 +466,6 @@
             border-radius: 8px;
         }
 
-        /* CARTÃO AJUDA */
         .card-ajuda {
             background: var(--hero-gradient);
             color: #ffffff;
@@ -442,12 +493,6 @@
             border-radius: 8px;
             font-weight: 700;
             margin-top: 1.2rem;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .btn-contato:hover {
-            transform: translateY(-2px);
-            background-color: #f8fafc;
         }
 
         footer {
@@ -455,22 +500,6 @@
             padding: 3rem 1.5rem;
             color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        /* KEYFRAMES ANIMAÇÕES */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -536,6 +565,16 @@
         </section>
 
         <section>
+            <h2>🌬️ Exercício de Respiração Guiada (4-7-8)</h2>
+            <p>Acalme a mente e diminua o ritmo cardíaco acompanhando os ciclos do círculo abaixo:</p>
+            <div class="respiracao-wrapper">
+                <div id="circulo-resp" class="circulo-respiracao">Pronto?</div>
+                <p id="instrucao-resp" style="font-weight: 600; margin-bottom: 1rem;">Clique no botão abaixo para começar.</p>
+                <button id="btn-iniciar-resp" class="btn-enviar" onclick="iniciarRespiracao()">Iniciar Respiração</button>
+            </div>
+        </section>
+
+        <section>
             <h2>🧠 O que é a Saúde Emocional?</h2>
             <img class="img-secao" src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=800&q=80" alt="Estudantes conversando e rindo juntos">
             
@@ -593,6 +632,50 @@
                 <div class="card-dica">
                     <h3>💬 Compartilhe</h3>
                     <p>Conversar sobre o que sente com alguém de confiança reduz drasticamente o peso emocional.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📖 Meu Diário de Gratidão Privado</h2>
+            <p>Focar em pequenas coisas boas melhora a nossa perspectiva. O que aconteceu de bom hoje? (Salvo apenas no seu navegador 🔒)</p>
+            <form class="form-desabafo" onsubmit="salvarGratidao(event)">
+                <input type="text" id="gratidao1" placeholder="1. Algo agradável que aconteceu hoje..." required>
+                <input type="text" id="gratidao2" placeholder="2. Alguém ou algo pelo qual sou grato(a)...">
+                <input type="text" id="gratidao3" placeholder="3. Uma pequena conquista pessoal de hoje...">
+                <button type="submit" class="btn-enviar">Guardar no Diário 💾</button>
+            </form>
+            <p id="msg-diario" style="margin-top: 1rem; color: #16a34a; font-weight: 600; display: none;">Salvo com sucesso no seu dispositivo! ✨</p>
+        </section>
+
+        <section>
+            <h2>❓ Perguntas Frequentes (FAQ)</h2>
+            <p>Tire suas dúvidas sobre acolhimento e apoio na escola:</p>
+            
+            <div class="faq-item">
+                <button class="faq-pergunta" onclick="toggleFaq(this)">
+                    Tenho vergonha de procurar ajuda na escola, o que faço? <span>+</span>
+                </button>
+                <div class="faq-resposta">
+                    <p>É perfeitamente normal sentir vergonha! Lembre-se que orientadores e psicólogos escolares estão ali justamente para apoiar você, sem julgamentos. Você pode começar enviando uma mensagem ou chamando um professor que você mais confia.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta" onclick="toggleFaq(this)">
+                    A conversa com a orientação da escola é confidencial? <span>+</span>
+                </button>
+                <div class="faq-resposta">
+                    <p>Sim! O profissional da escola mantém o sigilo da conversa. Apenas em situações onde haja risco direto à sua integridade ou de outra pessoa é que os responsáveis precisam ser acionados para a sua proteção.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pergunta" onclick="toggleFaq(this)">
+                    Como posso ajudar um colega que parece estar mal? <span>+</span>
+                </button>
+                <div class="faq-resposta">
+                    <p>Escute sem julgar, mostre que se importa e ofereça companhia. Se perceber que ele precisa de ajuda urgente, incentive-o a conversar com um adulto de confiança ou com a equipe da escola.</p>
                 </div>
             </div>
         </section>
@@ -668,14 +751,10 @@
             const caixaResposta = document.getElementById('resposta-termometro');
             const barraFill = document.getElementById('termometro-fill');
             
-            // Remove destaque dos outros botões
             document.querySelectorAll('.btn-emoji').forEach(btn => btn.classList.remove('active'));
             elemento.classList.add('active');
 
-            // Anima a barra de nível
             barraFill.style.width = porcentagem + '%';
-
-            // Exibe mensagem
             caixaResposta.style.display = 'block';
 
             if (estado === 'ótimo') {
@@ -690,6 +769,95 @@
                 caixaResposta.innerHTML = "A sobrecarga pesa bastante, né? 🛑 Tente fazer uma pausa agora: inspire em 4 segundos e solte o ar devagar. Se precisar, peça ajuda na escola ou desabafe no nosso formulário abaixo!";
             }
         }
+
+        // 5. EXERCÍCIO DE RESPIRAÇÃO (4-7-8)
+        let rodandoRespiracao = false;
+        function iniciarRespiracao() {
+            if (rodandoRespiracao) return;
+            rodandoRespiracao = true;
+            
+            const circulo = document.getElementById('circulo-resp');
+            const instrucao = document.getElementById('instrucao-resp');
+            const btn = document.getElementById('btn-iniciar-resp');
+            btn.style.display = 'none';
+
+            function ciclo() {
+                // Inspirar (4s)
+                circulo.className = 'circulo-respiracao inspirar';
+                circulo.innerText = 'Inspire...';
+                instrucao.innerText = 'Inspire lentamente pelo nariz durante 4 segundos.';
+                
+                setTimeout(() => {
+                    // Segurar (7s)
+                    circulo.className = 'circulo-respiracao segurar';
+                    circulo.innerText = 'Segure!';
+                    instrucao.innerText = 'Mantenha o ar nos pulmões por 7 segundos.';
+                    
+                    setTimeout(() => {
+                        // Expirar (8s)
+                        circulo.className = 'circulo-respiracao expirar';
+                        circulo.innerText = 'Expire...';
+                        instrucao.innerText = 'Solte o ar lentamente pela boca por 8 segundos.';
+                        
+                        setTimeout(() => {
+                            btn.style.display = 'inline-block';
+                            btn.innerText = 'Fazer Novamente';
+                            circulo.innerText = 'Concluído!';
+                            instrucao.innerText = 'Excelente! Como está se sentindo agora?';
+                            rodandoRespiracao = false;
+                        }, 8000);
+
+                    }, 7000);
+
+                }, 4000);
+            }
+
+            ciclo();
+        }
+
+        // 6. PERGUNTAS FREQUENTES (FAQ ACCORDION)
+        function toggleFaq(btn) {
+            const resposta = btn.nextElementSibling;
+            const sinal = btn.querySelector('span');
+            
+            if (resposta.classList.contains('open')) {
+                resposta.classList.remove('open');
+                sinal.innerText = '+';
+            } else {
+                // Fecha outras respostas abertas
+                document.querySelectorAll('.faq-resposta').forEach(r => r.classList.remove('open'));
+                document.querySelectorAll('.faq-pergunta span').forEach(s => s.innerText = '+');
+                
+                resposta.classList.add('open');
+                sinal.innerText = '−';
+            }
+        }
+
+        // 7. DIÁRIO DE GRATIDÃO (LOCALSTORAGE)
+        function salvarGratidao(e) {
+            e.preventDefault();
+            const g1 = document.getElementById('gratidao1').value;
+            const g2 = document.getElementById('gratidao2').value;
+            const g3 = document.getElementById('gratidao3').value;
+
+            const dados = { g1, g2, g3, data: new Date().toLocaleDateString('pt-BR') };
+            localStorage.setItem('diarioGratidao', JSON.stringify(dados));
+
+            const msg = document.getElementById('msg-diario');
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 4000);
+        }
+
+        // Carregar gratidão salva anteriormente
+        window.addEventListener('DOMContentLoaded', () => {
+            const salvo = localStorage.getItem('diarioGratidao');
+            if (salvo) {
+                const dados = JSON.parse(salvo);
+                if (dados.g1) document.getElementById('gratidao1').value = dados.g1;
+                if (dados.g2) document.getElementById('gratidao2').value = dados.g2;
+                if (dados.g3) document.getElementById('gratidao3').value = dados.g3;
+            }
+        });
     </script>
 
 </body>
