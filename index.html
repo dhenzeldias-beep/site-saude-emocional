@@ -1,59 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Apoio ao Estudante | Saúde Emocional</title>
     <style>
         /* ==========================================
-           VARIÁVEIS DE CORES (MODO CLARO / ESCURO)
+           VARIÁVEIS DE CORES E TEMA (MODERNO)
            ========================================== */
         :root {
-            --bg-body: #f4f9fc;
+            --bg-body: #f8fafc;
             --bg-card: #ffffff;
-            --text-main: #333333;
-            --text-heading: #1a5f7a;
-            --primary-color: #2b88a8;
-            --card-border: #eef7fa;
-            --table-border: #e0e0e0;
-            --input-bg: #ffffff;
-            --input-border: #cccccc;
-            --box-highlight: #eef7fa;
-            --warning-bg: #fff8e7;
-            --warning-border: #f39c12;
-            --warning-text: #555555;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            --primary-color: #2563eb;
+            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            --hero-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --card-border: #e2e8f0;
+            --table-border: #cbd5e1;
+            --input-bg: #f1f5f9;
+            --input-border: #cbd5e1;
+            --box-highlight: #eff6ff;
+            --warning-bg: #fffbebf5;
+            --warning-border: #f59e0b;
+            --warning-text: #b45309;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
             --font-size-base: 16px;
         }
 
         /* MODO ESCURO */
         body.dark-mode {
-            --bg-body: #12181f;
-            --bg-card: #1e2733;
-            --text-main: #e0e6ed;
-            --text-heading: #58c4dc;
-            --primary-color: #38a3a5;
-            --card-border: #2c3e50;
-            --table-border: #34495e;
-            --input-bg: #2c3e50;
-            --input-border: #455a64;
-            --box-highlight: #1a2a3a;
-            --warning-bg: #2d2615;
-            --warning-border: #f39c12;
-            --warning-text: #e0e0e0;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-heading: #f8fafc;
+            --primary-color: #60a5fa;
+            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --hero-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-border: #334155;
+            --table-border: #475569;
+            --input-bg: #0f172a;
+            --input-border: #475569;
+            --box-highlight: #1e3a8a33;
+            --warning-bg: #451a0333;
+            --warning-border: #f59e0b;
+            --warning-text: #fde68a;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
         /* ==========================================
-           ESTILOS GERAIS
+           RESET E ESTILOS BASE
            ========================================== */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         html {
             font-size: var(--font-size-base);
+            scroll-behavior: smooth;
         }
 
         body {
@@ -61,20 +71,24 @@
             color: var(--text-main);
             font-family: var(--font-family);
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* BARRA DE ACESSIBILIDADE E PERSONALIZAÇÃO */
+        /* BARRA DE ACESSIBILIDADE FIXA */
         .barramenu-acessibilidade {
-            background-color: #1a5f7a;
-            padding: 10px 15px;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .barramenu-acessibilidade div {
@@ -84,247 +98,379 @@
         }
 
         .btn-acessibilidade {
-            background: #ffffff;
-            color: #1a5f7a;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         }
 
         .btn-acessibilidade:hover {
-            background: #eef7fa;
+            background: #ffffff;
+            color: #0f172a;
+            transform: translateY(-1px);
         }
 
         .seletor-fonte {
-            padding: 4px;
-            border-radius: 4px;
-            border: none;
-            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-weight: 600;
             cursor: pointer;
+            outline: none;
         }
 
-        header {
-            background-color: var(--primary-color);
+        .seletor-fonte option {
+            background: #1e293b;
             color: #ffffff;
-            padding: 2.5rem 1rem;
+        }
+
+        /* HERO HEADER COM ANIMAÇÃO */
+        header {
+            background: var(--hero-gradient);
+            color: #ffffff;
+            padding: 5rem 1.5rem 4rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, var(--bg-body), transparent);
         }
 
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+            animation: fadeInDown 0.8s ease;
         }
 
         header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease;
         }
 
+        /* CONTAINER PRINCIPAL */
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 960px;
+            margin: -2rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
+        /* SEÇÕES / CARDS */
         section {
             background: var(--bg-card);
-            padding: 2rem;
-            margin-bottom: 1.8rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: background 0.3s;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.6s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
             color: var(--text-heading);
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid var(--card-border);
-            padding-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
         }
 
-        /* Imagens Ilustrativas */
         .img-secao {
             width: 100%;
-            max-height: 300px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        /* Listas */
-        ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+        /* TERMÔMETRO INTERATIVO COM BARRA DE PROGRESSO */
+        .termometro-box {
+            background-color: var(--box-highlight);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
         }
 
-        li {
-            margin-bottom: 0.6rem;
+        .emojis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 1.5rem 0;
         }
 
-        /* Tabela de Orientações */
+        .btn-emoji {
+            background: var(--bg-card);
+            border: 2px solid var(--card-border);
+            border-radius: 12px;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-size: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-emoji span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+
+        .btn-emoji:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.15);
+        }
+
+        .btn-emoji.active {
+            border-color: var(--primary-color);
+            background-color: var(--box-highlight);
+        }
+
+        /* BARRA DO TERMÔMETRO */
+        .termometro-bar-container {
+            width: 100%;
+            height: 12px;
+            background: var(--card-border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .termometro-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mensagem-resposta {
+            padding: 1rem 1.2rem;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            color: var(--text-heading);
+            font-weight: 500;
+            display: none;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* DICAS EM CARDS (GRID MODERNO) */
+        .grid-dicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .card-dica {
+            background: var(--box-highlight);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .card-dica:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-dica h3 {
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* TABELA */
         .tabela-wrapper {
             overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--table-border);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
         }
 
         th, td {
-            border: 1px solid var(--table-border);
-            padding: 12px;
+            padding: 14px 16px;
             text-align: left;
         }
 
         th {
             background-color: var(--box-highlight);
             color: var(--text-heading);
-            font-weight: bold;
+            font-weight: 700;
+            border-bottom: 2px solid var(--table-border);
         }
 
-        /* Termômetro das Emoções */
-        .termometro-box {
-            background-color: var(--box-highlight);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid var(--primary-color);
+        td {
+            border-bottom: 1px solid var(--table-border);
         }
 
-        .emojis-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 1.2rem 0;
+        tr:last-child td {
+            border-bottom: none;
         }
 
-        .btn-emoji {
-            background: var(--bg-card);
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-emoji span {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: var(--text-heading);
-        }
-
-        .btn-emoji:hover {
-            transform: scale(1.08);
-        }
-
-        .mensagem-resposta {
-            margin-top: 1rem;
-            padding: 12px;
-            background-color: var(--bg-card);
-            border-radius: 6px;
-            color: var(--text-heading);
-            font-weight: bold;
-            display: none;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        /* Formulário de Desabafo */
+        /* FORMULÁRIO */
         .form-desabafo {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 1rem;
             margin-top: 1rem;
         }
 
         .form-desabafo label {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--text-heading);
         }
 
         .form-desabafo input, 
         .form-desabafo textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: var(--input-bg);
             color: var(--text-main);
             border: 1px solid var(--input-border);
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
             font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-desabafo input:focus, 
+        .form-desabafo textarea:focus {
+            border-color: var(--primary-color);
         }
 
         .btn-enviar {
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
             color: #ffffff;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 28px;
             font-size: 1rem;
-            font-weight: bold;
-            border-radius: 5px;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
             align-self: flex-start;
-            transition: opacity 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
         .btn-enviar:hover {
-            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
         }
 
         .aviso-seguranca {
-            margin-top: 1.2rem;
-            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            font-size: 0.88rem;
             color: var(--warning-text);
             background-color: var(--warning-bg);
-            padding: 12px;
+            padding: 14px;
             border-left: 4px solid var(--warning-border);
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
-        /* Cartão de Ajuda Direta */
+        /* CARTÃO AJUDA */
         .card-ajuda {
-            background-color: var(--box-highlight);
-            border-left: 5px solid var(--text-heading);
-            padding: 1.5rem;
-            border-radius: 5px;
+            background: var(--hero-gradient);
+            color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         .card-ajuda h3 {
-            color: var(--text-heading);
+            color: #ffffff;
+            font-size: 1.3rem;
             margin-bottom: 0.8rem;
+        }
+
+        .card-ajuda p, .card-ajuda li {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .btn-contato {
             display: inline-block;
-            background-color: var(--text-heading);
-            color: #ffffff;
-            padding: 0.7rem 1.4rem;
+            background-color: #ffffff;
+            color: #1e3a8a;
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 0.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 1.2rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-contato:hover {
+            transform: translateY(-2px);
+            background-color: #f8fafc;
         }
 
         footer {
             text-align: center;
-            padding: 2rem 1rem;
-            color: var(--text-main);
+            padding: 3rem 1.5rem;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            opacity: 0.8;
+        }
+
+        /* KEYFRAMES ANIMAÇÕES */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -342,17 +488,17 @@
             <button class="btn-acessibilidade" onclick="resetarTamanhoFonte()">A</button>
         </div>
         <div>
-            <span>🎨 Tipo de Fonte:</span>
+            <span>🎨 Fonte:</span>
             <select class="seletor-fonte" onchange="alterarTipoFonte(this.value)">
-                <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Padrão (Sem Serifa)</option>
-                <option value="'Georgia', 'Times New Roman', serif">Clássica (Serifa)</option>
-                <option value="'Courier New', Courier, monospace">Espaçada (Mono)</option>
+                <option value="'Inter', system-ui, sans-serif">Padrão (Moderno)</option>
+                <option value="'Georgia', serif">Clássica (Serifa)</option>
+                <option value="'Courier New', monospace">Espaçada (Mono)</option>
             </select>
         </div>
     </div>
 
     <header>
-        <h1>🌱 Portal de Apoio ao Estudante</h1>
+        <h1>Portal de Apoio ao Estudante</h1>
         <p>Um espaço seguro para cuidar da sua Saúde Emocional e Bem-Estar 🤍</p>
     </header>
 
@@ -364,21 +510,25 @@
                 <p><strong>Como você está se sentindo hoje?</strong> Clique no emoji que melhor representa o seu momento:</p>
                 
                 <div class="emojis-grid">
-                    <button class="btn-emoji" onclick="mostrarResposta('ótimo')">
+                    <button class="btn-emoji" onclick="mostrarResposta('ótimo', 100, this)">
                         😁 <span>Muito Bem</span>
                     </button>
-                    <button class="btn-emoji" onclick="mostrarResposta('bem')">
+                    <button class="btn-emoji" onclick="mostrarResposta('bem', 75, this)">
                         🙂 <span>Bem</span>
                     </button>
-                    <button class="btn-emoji" onclick="mostrarResposta('medio')">
-                        😐 <span>Médio / Neutro</span>
+                    <button class="btn-emoji" onclick="mostrarResposta('medio', 50, this)">
+                        😐 <span>Médio</span>
                     </button>
-                    <button class="btn-emoji" onclick="mostrarResposta('triste')">
+                    <button class="btn-emoji" onclick="mostrarResposta('triste', 25, this)">
                         😢 <span>Triste</span>
                     </button>
-                    <button class="btn-emoji" onclick="mostrarResposta('estressado')">
+                    <button class="btn-emoji" onclick="mostrarResposta('estressado', 10, this)">
                         🤯 <span>Sobrecarregado</span>
                     </button>
+                </div>
+
+                <div class="termometro-bar-container">
+                    <div id="termometro-fill" class="termometro-bar-fill"></div>
                 </div>
 
                 <div id="resposta-termometro" class="mensagem-resposta"></div>
@@ -431,11 +581,20 @@
 
         <section>
             <h2>💡 Dicas Rápidas para o Seu Dia a Dia</h2>
-            <ol>
-                <li><strong>Técnica de Respiração (4-7-8) 🌬️:</strong> Inspire pelo nariz durante 4 segundos, segure o ar por 7 segundos e solte o ar lentamente pela boca durante 8 segundos.</li>
-                <li><strong>Divida as Tarefas 📝:</strong> Em vez de olhar para um trabalho enorme, divida-o em pequenos passos realizáveis.</li>
-                <li><strong>Converse com Alguém 💬:</strong> Compartilhar o que sente com um amigo, familiar ou professor de confiança reduz muito a carga emocional.</li>
-            </ol>
+            <div class="grid-dicas">
+                <div class="card-dica">
+                    <h3>🌬️ Respiração (4-7-8)</h3>
+                    <p>Inspire pelo nariz em 4s, segure por 7s e solte lentamente pela boca durante 8 segundos.</p>
+                </div>
+                <div class="card-dica">
+                    <h3>📝 Divida Tarefas</h3>
+                    <p>Em vez de focar num trabalho enorme, divida-o em pequenos passos realizáveis.</p>
+                </div>
+                <div class="card-dica">
+                    <h3>💬 Compartilhe</h3>
+                    <p>Conversar sobre o que sente com alguém de confiança reduz drasticamente o peso emocional.</p>
+                </div>
+            </div>
         </section>
 
         <section>
@@ -455,16 +614,15 @@
             </form>
             
             <div class="aviso-seguranca">
-                <strong>⚠️ Nota importante de segurança:</strong> Este formulário destina-se a desabafos e partilha de experiências. Se estiver passando por um momento de crise urgente ou emergência emocional, por favor contate diretamente o <strong>CVV (188)</strong> ou procure a orientação de um adulto de confiança na sua escola.
+                <strong>⚠️ Nota importante de segurança:</strong> Este formulário destina-se a desabafos. Se estiver passando por um momento de crise urgente ou emergência emocional, contate diretamente o <strong>CVV (188)</strong>.
             </div>
         </section>
 
-        <section>
-            <h2>🆘 Onde Encontrar Ajuda</h2>
+        <section style="background: transparent; border: none; box-shadow: none; padding: 0;">
             <div class="card-ajuda">
                 <h3>Lembre-se: Você nunca está sozinho! ❤️</h3>
                 <p>Se precisar de conversar ou de orientação profissional, você pode recorrer aos seguintes canais gratuitos e confidenciais:</p>
-                <ul>
+                <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
                     <li><strong>Na Escola:</strong> Psicólogos escolares, orientadores pedagógicos ou um professor da sua confiança.</li>
                     <li><strong>CVV (Centro de Valorização da Vida):</strong> Apoio emocional gratuito e confidencial 24 horas por dia.</li>
                 </ul>
@@ -489,7 +647,6 @@
 
         function alterarTamanhoFonte(mudanca) {
             tamanhoFonteAtual += mudanca * 2;
-            // Limites de tamanho (mínimo 12px, máximo 24px)
             if (tamanhoFonteAtual < 12) tamanhoFonteAtual = 12;
             if (tamanhoFonteAtual > 24) tamanhoFonteAtual = 24;
             
@@ -506,9 +663,19 @@
             document.documentElement.style.setProperty('--font-family', fonte);
         }
 
-        // 4. MENSAGENS DO TERMÔMETRO
-        function mostrarResposta(estado) {
+        // 4. MENSAGENS E ANIMAÇÃO DO TERMÔMETRO
+        function mostrarResposta(estado, porcentagem, elemento) {
             const caixaResposta = document.getElementById('resposta-termometro');
+            const barraFill = document.getElementById('termometro-fill');
+            
+            // Remove destaque dos outros botões
+            document.querySelectorAll('.btn-emoji').forEach(btn => btn.classList.remove('active'));
+            elemento.classList.add('active');
+
+            // Anima a barra de nível
+            barraFill.style.width = porcentagem + '%';
+
+            // Exibe mensagem
             caixaResposta.style.display = 'block';
 
             if (estado === 'ótimo') {
